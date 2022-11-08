@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import CartDrawer from "./Components/Global/CartDrawer";
+import Navbar from "./Components/Global/Navbar";
+import Home from "./Components/Pages/Home";
 
-function App() {
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar setIsOpen={setIsOpen} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <CartDrawer setIsOpen={setIsOpen} isOpen={isOpen} />
     </div>
   );
-}
+};
 
 export default App;
